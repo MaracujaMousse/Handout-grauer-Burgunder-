@@ -173,7 +173,7 @@
       filter: saturate(.7) contrast(.95) sepia(.1);
     }
 
-    .slide.is-active .photo img {
+    .slide.has-entered .photo img {
       animation: slowZoom 8s var(--ease) both;
     }
 
@@ -257,7 +257,7 @@
     [data-reveal="right"] { transform: translate3d(1.6rem, 0, 0); }
     [data-reveal="scale"] { transform: scale(.94); }
 
-    .slide.is-active [data-reveal] {
+    .slide.has-entered [data-reveal] {
       opacity: 1;
       transform: translate3d(0, 0, 0) scale(1);
     }
@@ -324,7 +324,7 @@
         linear-gradient(to top, rgba(74,58,46,.12), transparent 24%);
     }
 
-    .hero.is-active .bottle-stage {
+    .hero.has-entered .bottle-stage {
       animation: bottleRise 1.35s var(--ease) .14s both;
     }
 
@@ -646,7 +646,7 @@
       background: linear-gradient(to bottom, rgba(185,170,152,.26), transparent 32%, rgba(40,34,26,.08));
     }
 
-    .taste.is-active .fruit-pair { animation: fruitPair 1.25s var(--ease) .2s both; }
+    .taste.has-entered .fruit-pair { animation: fruitPair 1.25s var(--ease) .2s both; }
 
     .flavours {
       position: absolute;
@@ -728,74 +728,7 @@
       text-align: right;
     }
 
-    /* 06 · Fazit */
-    .finale { color: var(--white); background: #40332b; }
-
-    .finale::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: radial-gradient(circle at 14% 28%, rgba(210,194,161,.2), transparent 40%), linear-gradient(135deg, #564338, #2b2420 75%);
-    }
-
-    .finale .slide-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-    .finale .display {
-      position: relative;
-      z-index: 4;
-      max-width: 6.8ch;
-      margin-top: 9vh;
-      font-size: clamp(4rem, 18vw, 9.5rem);
-      text-align: right;
-    }
-
-    .finale .bottle-stage {
-      left: -20vw;
-      bottom: -17vh;
-      width: min(79vw, 31rem);
-      height: 80vh;
-      border-radius: 0 52% 0 0 / 0 22% 0 0;
-      box-shadow: 1.5rem 1.8rem 3rem rgba(19,15,12,.28);
-      transform: rotate(-4deg);
-    }
-
-    .finale .bottle-stage::after {
-      background:
-        linear-gradient(to right, transparent 55%, rgba(64,51,43,.82) 100%),
-        linear-gradient(to top, rgba(43,36,32,.4), transparent 25%);
-    }
-
-    .finale.is-active .bottle-stage { animation: finalBottle 1.3s var(--ease) .15s both; }
-
-    .closing-copy {
-      position: relative;
-      z-index: 5;
-      max-width: min(64vw, 25rem);
-      margin-top: auto;
-      padding-bottom: 2vh;
-      text-align: right;
-    }
-
-    .closing-copy .trio {
-      margin-bottom: 1.35rem;
-      font-size: .66rem;
-      font-weight: 500;
-      line-height: 1.8;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-    }
-
-    .closing-copy blockquote {
-      margin: 0;
-      font: 400 clamp(1.25rem, 5.7vw, 2rem)/1.23 var(--serif);
-    }
-
-    /* 07 · Danke */
+    /* 06 · Danke */
     .cheers { color: var(--white); background: #4b5a42; }
     .cheers .photo { inset: 0; }
 
@@ -900,11 +833,6 @@
       to { opacity: 1; transform: translate3d(0, 0, 0) rotate(0); }
     }
 
-    @keyframes finalBottle {
-      from { opacity: 0; transform: translate3d(-12%, 16%, 0) rotate(-8deg); }
-      to { opacity: 1; transform: translate3d(0, 0, 0) rotate(-4deg); }
-    }
-
     @keyframes fruitPair {
       from { opacity: 0; transform: translate3d(0, 14%, 0) scale(1.06); }
       to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
@@ -989,14 +917,6 @@
       .ritual { width: min(48%, 34rem); margin-left: 12%; }
       .question { margin-right: 7%; max-width: 26rem; }
 
-      .finale .bottle-stage {
-        left: -1vw;
-        bottom: -17vh;
-        width: min(43vw, 34rem);
-        height: 87vh;
-      }
-
-      .closing-copy { max-width: min(48vw, 32rem); padding-bottom: 7vh; }
       .cheers .display { margin-top: 7vh; }
       .toast { margin-bottom: 7vh; }
       .progress { right: max(1rem, env(safe-area-inset-right)); }
@@ -1010,7 +930,7 @@
       .grape-note { font-size: 1.25rem; }
       .making .display { margin-top: 1.5rem; font-size: 3.25rem; }
       .process { gap: .45rem; margin-bottom: 1rem; }
-      .taste .display, .tasting .display, .finale .display { margin-top: 1.5rem; font-size: 3.7rem; }
+      .taste .display, .tasting .display { margin-top: 1.5rem; font-size: 3.7rem; }
       .ritual-item { padding: .58rem 0; }
     }
 
@@ -1132,22 +1052,6 @@
       </div>
     </section>
 
-    <section class="slide finale" id="fazit" data-title="Fazit" data-tone="dark" aria-labelledby="title-finale">
-      <div class="slide-inner">
-        <p class="chapter d1" data-reveal>06 · Fazit</p>
-        <h2 class="display d2" id="title-finale" data-reveal>GRAUER BURGUNDER</h2>
-        <div class="closing-copy">
-          <p class="trio d3" data-reveal>Fruchtig.<br>Mild.<br>Unkompliziert.</p>
-          <blockquote class="d4" data-reveal>„Ein Wein, den man nicht verstehen muss, um ihn zu genießen.“</blockquote>
-        </div>
-      </div>
-
-      <figure class="bottle-stage asset" aria-label="Flasche Rebenblick Grauer Burgunder">
-        <span class="bottle-fallback" aria-hidden="true"></span>
-        <img data-asset src="bilder/rebenblick-grauer-burgunder-2025.png" alt="Flasche Rebenblick Grauer Burgunder Baden 2025" loading="lazy">
-      </figure>
-    </section>
-
     <section class="slide cheers" id="prost" data-title="Prost" data-tone="dark" aria-labelledby="title-cheers">
       <figure class="photo asset" aria-hidden="true">
         <img data-asset src="bilder/WhatsApp Image 2026-08-27 at 10.10.54.jpeg" alt="" loading="lazy">
@@ -1186,6 +1090,7 @@
         const index = slides.indexOf(slide);
         if (index < 0) return;
 
+        slide.classList.add('has-entered');
         slides.forEach((item, itemIndex) => {
           item.classList.toggle('is-active', itemIndex === index);
           dots[itemIndex].setAttribute('aria-current', itemIndex === index ? 'true' : 'false');
